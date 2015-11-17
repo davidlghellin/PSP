@@ -33,38 +33,31 @@ import java.util.logging.Logger;
 public class ServidorSocket
 {
 
-    public static void main(String[] args)  
+    public static void main(String[] args) throws ClassNotFoundException
     {
         try
         {
             ClaseSerializada c;
-            
+
             // Creamos el socket del servidor
             ServerSocket server = new ServerSocket();
             // Hacemos el bind(asociación) de la IP y del puerto al server
             InetSocketAddress direccion = new InetSocketAddress("localhost", 6666);
             server.bind(direccion);
-            
+
             // Creamos el socket con la conexión extablecida
             Socket socket = server.accept();
-            
+
             ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
             DataOutputStream os = new DataOutputStream(socket.getOutputStream());
-            
+
             while (socket.isConnected())
             {
-                Object obj = null;
-                try
-                {
-                    obj = is.readObject();
-                } catch (ClassNotFoundException ex)
-                {
-                    Logger.getLogger(ServidorSocket.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Object obj = is.readObject();
                 if (obj.getClass().equals((ClaseSerializada.class)))
                 {
                     c = (ClaseSerializada) obj;
-                    System.out.println("Objeto con: "+c);
+                    System.out.println("Objeto con: " + c);
                 }
             }
             server.close();
@@ -75,6 +68,6 @@ public class ServidorSocket
         {
             Logger.getLogger(ServidorSocket.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Acabamos");
+        System.out.println("Acabamos programa");
     }
 }

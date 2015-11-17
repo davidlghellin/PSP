@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad03.ejemplo01;
 
 import java.io.BufferedReader;
@@ -27,7 +22,7 @@ public class Conector
     DataOutputStream salida;    // Flujo que enviaremos al cliente
     BufferedReader entrada;     // Flujo que leeremos del cliente
 
-    public void iniar()
+    public void iniciar()
     {
         try
         {

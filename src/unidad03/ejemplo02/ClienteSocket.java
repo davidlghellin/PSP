@@ -62,8 +62,14 @@ public class ClienteSocket
 
     }
 
+    /**
+     * Método que devuelve la IP del sistema, tanto en GNU/linux como en microsoft
+     * @return
+     * @throws IOException 
+     */
     public static String saberIP() throws IOException
     {
+        // TODO hacer la expresión regular (xejemplo para capturarla)
         // Obtenemos el S.O. para saber que IP ponerle
         String so = System.getProperty("os.name");
         String comando;

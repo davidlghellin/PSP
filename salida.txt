@@ -1,0 +1,25 @@
+[1;34m
+[1;34m               +                
+[1;34m               #                
+[1;34m              ###               
+[1;34m             #####              
+[1;34m             ######             
+[1;34m            ; #####;            [1;34mUser: [0mwizord
+[1;34m           +##.#####            [1;34mHostname: [0mAthenea
+[1;34m          +##########           [1;34mDistro: [0mArch Linux
+[1;34m         ######[0;34m#####[1;34m##;         [1;34mKernel: [0m4.2.2-1-ARCH
+[1;34m        ###[0;34m############[1;34m+        [1;34mUptime: [0m2:36
+[1;34m       #[0;34m######   #######        [1;34mWindow Manager: [0m
+[0;34m     .######;     ;###;`".      [1;34mDesktop Environment: [0mGNOME
+[0;34m    .#######;     ;#####.       [1;34mShell: [0m/bin/zsh
+[0;34m    #########.   .########`     [1;34mTerminal: [0mNone
+[0;34m   ######'           '######    [1;34mPackages: [0m1152
+[0;34m  ;####                 ####;   [1;34mCPU: [0mIntel(R) Core(TM) i7-4700MQ CPU @ 2.40GHz
+[0;34m  ##'                     '##   [1;34mRAM: [0m[0;32m-8625 MB [0m/ 7909 MB 
+[0;34m #'                         `#  [1;34mDisk: [0m[0;33m289G [0m/ 537G
+[0m
+[44m[01;32mwizord[01;31m@[1;32mAthenea[00m [01;33m(12:22) [01;32m:[01;34m~/NetBeansProjects/PSP[00m$ cd
+[44m[01;32mwizord[01;31m@[1;32mAthenea[00m [01;33m(12:22) [01;32m:[01;34m~[00m$ pwd
+/home/wizord
+[44m[01;32mwizord[01;31m@[1;32mAthenea[00m [01;33m(12:22) [01;32m:[01;34m~[00m$ exit
+exit
