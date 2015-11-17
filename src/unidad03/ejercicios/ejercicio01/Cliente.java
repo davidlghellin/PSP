@@ -17,12 +17,9 @@
  */
 package unidad03.ejercicios.ejercicio01;
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
@@ -35,33 +32,30 @@ public class Cliente
 {
 
     Socket clienteSocket;
-    private int puerto = 9000;          // Puerto con el que trabajaremos
-    private String ip = "127.0.0.1";
+    private int puerto = 9000;              // Puerto con el que trabajaremos
+    private String ip = "127.0.0.1";        // IP con la que conectaremos
     private InetSocketAddress direccion;
 
-    DataInputStream entrada;
     DataOutputStream salida;
 
     String texto = null;
 
     public void conectar() throws IOException
     {
-        clienteSocket = new Socket();
+        clienteSocket = new Socket();       // Creamos la instancia del socket
         direccion = new InetSocketAddress(ip, puerto);
-        clienteSocket.connect(direccion);
+        clienteSocket.connect(direccion);   // Asociamos la direccion y creamos la conexión
 
-        // Obtener los InputStream y/o OutputStream del servidor
-        entrada = new DataInputStream(clienteSocket.getInputStream());
+        // Stream por el que enviaremos los datos
         salida = new DataOutputStream(clienteSocket.getOutputStream());
 
         Scanner teclado = new Scanner(System.in);
         do
         {
-            System.out.println("Soy cliente mandando, introduzca FIN");
+            System.out.println("Soy cliente mandando, introduzca FIN para terminar");
             texto=teclado.nextLine();
             salida.writeUTF(texto);
         } while (clienteSocket.isConnected() && !texto.equals("FIN"));
         System.out.println("Socket con el server cerrado");
-
     }
 }
