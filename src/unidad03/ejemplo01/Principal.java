@@ -15,6 +15,5 @@ public class Principal
     {
         Conector c=new Conector();
         c.iniar();
-        
     }
 }
