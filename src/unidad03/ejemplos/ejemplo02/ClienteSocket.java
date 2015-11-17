@@ -1,4 +1,4 @@
-package unidad03.ejemplo02;
+package unidad03.ejemplos.ejemplo02;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
