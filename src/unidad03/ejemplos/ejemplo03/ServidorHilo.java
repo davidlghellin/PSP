@@ -66,7 +66,7 @@ public class ServidorHilo implements Runnable
             texto = entrada.readUTF();
             while (!texto.equals("FIN"))
             {
-                System.out.println(texto);
+                System.out.println("El cliente "+id+": "+texto);
                 texto = entrada.readUTF();
             }
         } catch (IOException ex)

@@ -34,7 +34,6 @@ public class ClienteSocket
     private int puerto = 9000;              // Puerto con el que trabajaremos
     private String ip = "127.0.0.1";        // IP con la que conectaremos
     private InetSocketAddress direccion;
-    private int id = 0;
     DataOutputStream salida;
     String texto;
 
@@ -55,6 +54,7 @@ public class ClienteSocket
             texto = teclado.nextLine();
             salida.writeUTF(texto);
         } while (clienteSocket.isConnected() && !texto.equals("FIN"));
+        clienteSocket.close();
         System.out.println("Socket con el server cerrado");
     }
 }

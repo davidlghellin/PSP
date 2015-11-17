@@ -48,8 +48,8 @@ public class ServidorSocket
         while (true)
         {
             socket = server.accept();
-            System.out.println("Conexion establecida" + socket);
-            new Thread(((ServidorHilo) new ServidorHilo(socket, id))).start();
+            System.out.println("Conexion establecida: " + socket);
+            new Thread(((ServidorHilo) new ServidorHilo(socket, id++))).start();
         }
     }
 }
