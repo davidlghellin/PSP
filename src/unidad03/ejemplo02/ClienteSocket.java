@@ -1,8 +1,11 @@
 package unidad03.ejemplo02;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -11,9 +14,9 @@ import java.net.Socket;
  *
  * @author David López González
  */
-
 class ClaseSerializada implements Serializable
 {
+
     String nombre;
     int id;
 
@@ -26,28 +29,42 @@ class ClaseSerializada implements Serializable
     @Override
     public String toString()
     {
-        return "Soy: "+nombre+".";
+        return "Soy: " + nombre + ".";
     }
 }
 
 public class ClienteSocket
 {
+
     public static void main(String[] args) throws IOException
     {
-        ClaseSerializada c= new ClaseSerializada("David", 1);
-        
+        ClaseSerializada c = new ClaseSerializada("David", 1);
+
         // Preparo el socket 
-        Socket clienteSocket= new Socket();
-        String ip=saberIP();
+        Socket clienteSocket = new Socket();
+        String ip = saberIP();
+
+        // InetSocketAddress direccion = new InetSocketAddress(ip,6666);
+        InetSocketAddress direccion = new InetSocketAddress("localhost", 6666);
+        clienteSocket.connect(direccion);
         
+        DataInputStream is= new DataInputStream(clienteSocket.getInputStream());
+        ObjectOutput    os= new ObjectOutputStream(clienteSocket.getOutputStream());
         
-        InetSocketAddress direccion = new InetSocketAddress("localhost",6666);
-       // InetSocketAddress direccion = new InetSocketAddress(ip,6666);
-           
+        System.out.println("Enviando mensaje");
+        
+        os.writeObject("Envio obj");
+        os.writeObject(c);
+        os.writeObject("Adios");
+        
+        System.out.println("Cerrando");
+        clienteSocket.close();
+
     }
+
     public static String saberIP() throws IOException
     {
-       // Obtenemos el S.O. para saber que IP ponerle
+        // Obtenemos el S.O. para saber que IP ponerle
         String so = System.getProperty("os.name");
         String comando;
         // Comando para Linux
@@ -62,7 +79,6 @@ public class ClienteSocket
         }
         Process p = Runtime.getRuntime().exec(comando);
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        
 
         // falta tomar solamente la ip y no todo la info del comando
         return stdInput.toString();
