@@ -18,8 +18,8 @@
 package unidad03.ejercicios.ejercicio01;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -32,42 +32,43 @@ import java.util.logging.Logger;
  */
 public class Server
 {
-    //Socket que solamente acepta una conexión
-        
-    private ServerSocket server;        // Socket server
-    private Socket socket;              // Socket de entrada
-    private DataInputStream entrada;    // Flujo que leeremos del cliente
+
+    ServerSocket server;        // Socket server
+    Socket socket;              // Socket de entrada
     private int puerto = 9000;          // Puerto con el que trabajaremos
     private String ip = "127.0.0.1";      // Direción ip con la que escucharemos
-    InetSocketAddress direccion;
+    InetSocketAddress direccion;         // Puerto con el que trabajaremos
+    DataOutputStream salida;    // Flujo que enviaremos al cliente
+    DataInputStream entrada;     // Flujo que leeremos del cliente
 
-    public void servicio()
+    Server()
     {
         try
         {
-            server = new ServerSocket();        // Servidor con puerto
+            server = new ServerSocket();
             direccion = new InetSocketAddress(ip, puerto);
-            server.bind(direccion);             // Asociamos la inet al servidor
+            server.bind(direccion);
+            socket = new Socket();
+            socket = server.accept();
 
-            socket = new Socket();              // Creamos la instancia del socket
-            socket = server.accept();           // Establecemos la conexión
-
-            // Creamos el flujo de entrada en un buffer
+            salida = new DataOutputStream(socket.getOutputStream());
             entrada = new DataInputStream(socket.getInputStream());
-            String mensaje = null;
-            do
+            String texto;
+            texto = entrada.readUTF();
+            while (!texto.equalsIgnoreCase("Bye"))
             {
-                System.out.println("Soy server");
-                mensaje = entrada.readUTF();
-                System.out.println("responde: " + mensaje);
-            } while (socket.isConnected() && !mensaje.equals("FIN"));
-
-            System.out.println("Socket cerrado");
-            socket.close();
+                System.out.println(texto);
+                salida.writeUTF(texto);
+                texto = entrada.readUTF();
+            }
+            salida.writeUTF("Cerrada conexion");
+            salida.close();
             entrada.close();
+            server.close();
+            socket.close();
         } catch (IOException ex)
         {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
+}////////////////////

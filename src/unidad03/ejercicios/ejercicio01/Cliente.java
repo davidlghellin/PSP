@@ -21,8 +21,11 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,31 +34,43 @@ import java.util.Scanner;
 public class Cliente
 {
 
-    Socket clienteSocket;
-    private int puerto = 9000;              // Puerto con el que trabajaremos
-    private String ip = "127.0.0.1";        // IP con la que conectaremos
+    private Socket clienteSocket;              // Socket de entrada
+    private int puerto = 9000;          // Puerto con el que trabajaremos
+    private DataOutputStream salida;    // Flujo que enviaremos al cliente
+    private DataInputStream entrada;     // Flujo que leeremos del cliente
+    private String ip = "127.0.0.1";
     private InetSocketAddress direccion;
 
-    DataOutputStream salida;
-
-    String texto = null;
-
-    public void conectar() throws IOException
+    public Cliente()
     {
-        clienteSocket = new Socket();       // Creamos la instancia del socket
-        direccion = new InetSocketAddress(ip, puerto);
-        clienteSocket.connect(direccion);   // Asociamos la direccion y creamos la conexión
-
-        // Stream por el que enviaremos los datos
-        salida = new DataOutputStream(clienteSocket.getOutputStream());
-
-        Scanner teclado = new Scanner(System.in);
-        do
+        try
         {
-            System.out.println("Soy cliente mandando, introduzca FIN para terminar");
-            texto=teclado.nextLine();
-            salida.writeUTF(texto);
-        } while (clienteSocket.isConnected() && !texto.equals("FIN"));
-        System.out.println("Socket con el server cerrado");
+            clienteSocket = new Socket();       // Creamos la instancia del socket
+            direccion = new InetSocketAddress(ip, puerto);
+            clienteSocket.connect(direccion);
+
+            salida = new DataOutputStream(clienteSocket.getOutputStream());
+            entrada = new DataInputStream(clienteSocket.getInputStream());
+
+            Scanner teclado = new Scanner(System.in);
+            String texto = null;
+            String aux= null;
+            do
+            {
+                System.out.println("Soy cliente mandando, introduzca Bye para terminar");
+                texto = teclado.nextLine();
+                salida.writeUTF(texto);
+              // if(!texto.equals("Bye"))
+                     aux = entrada.readUTF();
+                System.out.println("Esto me lo envia el server: " + aux);
+            } while (clienteSocket.isConnected() && !texto.equals("Bye"));
+            System.out.println("Socket con el server cerrado");
+            salida.close();
+            entrada.close();
+            clienteSocket.close();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

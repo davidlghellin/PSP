@@ -17,17 +17,15 @@
  */
 package unidad03.ejercicios.ejercicio01;
 
-import java.io.IOException;
-
 /**
  *
  * @author David López González
  */
 public class PrincipalServer
 {
-    public static void main(String[] args) throws IOException
+
+    public static void main(String[] args)
     {
-        Server server= new Server();
-        server.servicio();        
+        Server s = new Server();
     }
 }

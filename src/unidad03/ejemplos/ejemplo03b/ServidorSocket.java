@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package unidad03.ejemplos.ejemplo03;
+package unidad03.ejemplos.ejemplo03b;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -29,27 +29,27 @@ import java.net.Socket;
  */
 public class ServidorSocket
 {
-
     private ServerSocket server;        // Socket server
     private Socket socket;              // Socket de entrada
     private DataInputStream entrada;    // Flujo que leeremos del cliente
     private int puerto = 9000;          // Puerto con el que trabajaremos
-    private String ip = "127.0.0.1";      // Direción ip con la que escucharemos
+    private String ip = "127.0.0.1";    // Direción ip con la que escucharemos
     private InetSocketAddress direccion;
     private int id = 0;
 
     public void servicio() throws IOException
     {
-        server = new ServerSocket();        // Servidor con puerto
+        server = new ServerSocket();    // Servidor con puerto
         direccion = new InetSocketAddress(ip, puerto);
-        server.bind(direccion);
+        server.bind(direccion);         // Enlazamos la dirección y el puerto añ socket
 
         System.out.println("Servidor esperando clientes");
-        while (true)
+        while (true)                    
         {
             socket = server.accept();
             System.out.println("Conexion establecida: " + socket);
             new Thread(((ServidorHilo) new ServidorHilo(socket, id++))).start();
+            socket = null;
         }
     }
 }

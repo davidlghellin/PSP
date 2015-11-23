@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package unidad03.ejemplos.ejemplo03;
+package unidad03.ejemplos.ejemplo03b;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -30,7 +30,7 @@ import java.util.logging.Logger;
  */
 public class ServidorHilo implements Runnable
 {
-
+//TODO mal
     private Socket socket;
     private DataOutputStream salida;
     private DataInputStream entrada;

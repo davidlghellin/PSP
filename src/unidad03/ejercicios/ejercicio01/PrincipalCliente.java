@@ -17,17 +17,15 @@
  */
 package unidad03.ejercicios.ejercicio01;
 
-import java.io.IOException;
-
 /**
  *
- * @author David López GonzálezS
+ * @author David López González
  */
 public class PrincipalCliente
 {
-    public static void main(String[] args) throws IOException
+
+    public static void main(String[] args)
     {
-        Cliente cliente= new Cliente();
-        cliente.conectar(); 
+        Cliente c = new Cliente();
     }
 }
