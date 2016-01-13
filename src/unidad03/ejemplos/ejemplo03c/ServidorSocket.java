@@ -1,4 +1,4 @@
-package unidad03.ejemplos.ejemplo03b;
+package unidad03.ejemplos.ejemplo03c;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class ServidorSocket
         {
             socket = server.accept();
             System.out.println("Conexion establecida: " + socket);
-            new Thread(((ServidorHilo) new ServidorHilo(socket, id++))).start();
+            new Thread(((ServidorHiloEscucha) new ServidorHiloEscucha(socket, id++))).start();
             socket = null;
         }
     }

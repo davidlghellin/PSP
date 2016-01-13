@@ -1,4 +1,4 @@
-package unidad03.ejemplos.ejemplo03b;
+package unidad03.ejemplos.ejemplo03c;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  *
  * @author David López González
  */
-public class ServidorHilo implements Runnable
+public class ServidorHiloEscucha implements Runnable
 {
     //TODO revisar
 
@@ -20,7 +20,7 @@ public class ServidorHilo implements Runnable
     private DataInputStream entrada;
     private int id;
 
-    public ServidorHilo(Socket socket, int id) throws IOException
+    public ServidorHiloEscucha(Socket socket, int id) throws IOException
     {
         this.socket = socket;
         this.id = id;
@@ -37,7 +37,7 @@ public class ServidorHilo implements Runnable
             socket.close();
         } catch (IOException ex)
         {
-            Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServidorHiloEscucha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -54,7 +54,7 @@ public class ServidorHilo implements Runnable
             } while (!texto.equals("FIN"));
         } catch (IOException ex)
         {
-            Logger.getLogger(ServidorHilo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServidorHiloEscucha.class.getName()).log(Level.SEVERE, null, ex);
         }
         cerrar();
     }

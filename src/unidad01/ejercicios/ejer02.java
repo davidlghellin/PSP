@@ -15,7 +15,6 @@ import java.util.logging.Logger;
  */
 public class ejer02
 {
-
     public static void main(String[] args)
     {
         Runtime r = Runtime.getRuntime();
@@ -36,6 +35,5 @@ public class ejer02
         {
             System.err.println("Error");
         }
-
     }
 }

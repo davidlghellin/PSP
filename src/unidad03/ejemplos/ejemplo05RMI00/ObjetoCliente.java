@@ -28,7 +28,7 @@ public class ObjetoCliente
             System.out.println("Realizando operaciones ...");
             try
             {
-                System.out.println("5 + 4=" + or.suma(5, 4));
+                System.out.println("5 + 4 = " + or.suma(5, 4));
             } catch (RemoteException e)
             {
                 e.printStackTrace();

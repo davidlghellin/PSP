@@ -63,7 +63,7 @@ public class Cliente
               // if(!texto.equals("Bye"))
                      aux = entrada.readUTF();
                 System.out.println("Esto me lo envia el server: " + aux);
-            } while (clienteSocket.isConnected() && !texto.equals("Bye"));
+            } while (clienteSocket.isConnected() && !texto.equalsIgnoreCase("Bye"));
             System.out.println("Socket con el server cerrado");
             salida.close();
             entrada.close();

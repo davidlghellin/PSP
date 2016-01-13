@@ -1,4 +1,4 @@
-package unidad03.ejemplos.ejemplo03b;
+package unidad03.ejemplos.ejemplo03c;
 
 import java.io.IOException;
 

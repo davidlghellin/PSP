@@ -36,8 +36,8 @@ public class Saludo extends UnicastRemoteObject implements SaludoInterface
     public static void main(String[] args) throws InterruptedException, RemoteException
     {
         // Instanciamos donde registraremos los nombres asociados con el puerto
-        Registry registroNombres=LocateRegistry.createRegistry(12345);
-        SaludoInterface s= new Saludo();
+        Registry registroNombres = LocateRegistry.createRegistry(12345);
+        SaludoInterface s = new Saludo();
         try
         {
             Naming.rebind("//localhost:12345/saludo1", s);
