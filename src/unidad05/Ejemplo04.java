@@ -1,4 +1,4 @@
-package unidad5;
+package unidad05;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -29,6 +29,8 @@ public class Ejemplo04
             System.out.println("Algoritmo: "        + md.getAlgorithm());
             System.out.println("Mensaje resumen: "  + new String(resume));
             System.out.println("Hexadecimal: "      + Hexadecimal(resume));
+            System.out.println(
+            MessageDigest.isEqual(dataBytes, ("esto es un texto plano.").getBytes()));
 
             // Proveedor
             Provider proveedor = md.getProvider();

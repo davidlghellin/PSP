@@ -1,4 +1,4 @@
-package unidad5;
+package unidad05;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Ejemplo08
     {
         try
         {
-            FileInputStream inpriv = new FileInputStream("clave.privada");
+            FileInputStream inpriv = new FileInputStream("/home/wizord/clave.privada");
             byte[] bufferPriv = new byte[inpriv.available()];
             inpriv.read(bufferPriv);
             inpriv.close();
@@ -25,6 +25,7 @@ public class Ejemplo08
             PKCS8EncodedKeySpec clavePrivadaSpec = new PKCS8EncodedKeySpec(bufferPriv);
             KeyFactory keydSA = KeyFactory.getInstance("DSA");
             PrivateKey clavePrivada = keydSA.generatePrivate(clavePrivadaSpec);
+            
 
         } catch (Exception e){}
     }

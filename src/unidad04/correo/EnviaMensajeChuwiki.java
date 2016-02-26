@@ -1,17 +1,22 @@
 package unidad04.correo;
 
+import java.security.Security;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
+import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import sun.misc.JavaAWTAccess;
 
 /**
  *
@@ -19,7 +24,7 @@ import javax.mail.internet.MimeMultipart;
  */
 public class EnviaMensajeChuwiki
 {
-
+    
     public static void main(String[] args) throws MessagingException
     {
         /*
@@ -42,13 +47,19 @@ public class EnviaMensajeChuwiki
         props.setProperty("mail.smtp.port", "587");
 
         // Nombre del usuario
-        props.setProperty("mail.smtp.user", "davidlghellin@gmail.com");
+        props.setProperty("mail.smtp.user", "davidlg.dam@gmail.com");
 
         // Si requiere o no usuario y password para conectarse.
         props.setProperty("mail.smtp.auth", "true");
 
-        Session session = Session.getDefaultInstance(props);
-
+        //Session session = Session.getDefaultInstance(props);
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator()
+        {
+            protected PasswordAuthentication getPasswordAuthentication()
+            {
+                return new PasswordAuthentication("davidlg.dam@gmail.com", "aprenderesgratis");
+            }
+        });
         // Para obtener un log de salida más extenso
         session.setDebug(true);
 
@@ -63,11 +74,9 @@ public class EnviaMensajeChuwiki
         MimeMessage message = new MimeMessage(session);
 
         // Quien envia el correo
-        message.setFrom(new InternetAddress("davidlg.dam@gmail.com"));
-
+        //message.setFrom(new InternetAddress("davidlg.dam@gmail.com"));
         // A quien va dirigido
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress("davidlghellin@gmail.com"));
-
+        //message.addRecipient(Message.RecipientType.TO, new InternetAddress("davidlghellin@gmail.com"));
         message.setSubject("Asunto del mensaje");
         message.setText("Texto del mensaje");
 
@@ -82,7 +91,7 @@ public class EnviaMensajeChuwiki
         BodyPart texto = new MimeBodyPart();
 
         // Texto del mensaje
-        texto.setText("Texto del mensaje");
+        texto.setText("Mensaje desde java");
         //Luego construimos la parte del adjunto con la imagen. Suponemos que 
         //la tenemos en un fichero
         BodyPart adjunto = new MimeBodyPart();
@@ -91,8 +100,8 @@ public class EnviaMensajeChuwiki
         adjunto.setDataHandler(new DataHandler(new FileDataSource("/home/wizord/Imágenes/gif/taylor.gif")));
 
         // Opcional. De esta forma transmitimos al receptor el nombre original del
-        // fichero de imagen.
-        adjunto.setFileName("taylor.gif");
+        // fichero de imagen
+        adjunto.setFileName("taylorNombre.gif");
         //Ahora juntamos ambas en una sola parte que luego debemos añadir al mensaje
         MimeMultipart multiParte = new MimeMultipart();
         multiParte.addBodyPart(texto);
@@ -106,9 +115,10 @@ public class EnviaMensajeChuwiki
 
         // Se rellenan los destinatarios
         message.addRecipient(Message.RecipientType.TO, new InternetAddress("davidlghellin@gmail.com"));
+        // message.setSender(new InternetAddress("davidlghellin@gmail.com"));
 
-        // Se rellena el subject
-        message.setSubject("Hola");
+        // Se rellena el asunto
+        message.setSubject("Hola dav");
 
         // Se mete el texto y la foto adjunta.
         message.setContent(multiParte);
@@ -118,12 +128,15 @@ public class EnviaMensajeChuwiki
         lo enviamos. Para ello necesitamos una instancia de la clase Transport. 
         Se hace de la siguiente manera
          */
-        Transport t = session.getTransport("smtp");
-
+        
+        /* Transport t = session.getTransport("smtp");
         // Aqui usuario y password de gmail
-        String pass = UtilsCorreo.leePassword();
+        String pass = "aprenderesgratis";//UtilsCorreo.leePassword();
         t.connect("davidlg.dam@gmail.com", pass);
+        //enviamos mensaje
         t.sendMessage(message, message.getAllRecipients());
-        t.close();
+        t.close();*/
+        
+        Transport.send(message);
     }
 }

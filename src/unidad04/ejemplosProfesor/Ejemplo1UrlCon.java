@@ -1,10 +1,9 @@
+package unidad04.ejemplosProfesor;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-
-/*package unidad04.ejemplosProfesor;
 
 /**
  * @author profesor

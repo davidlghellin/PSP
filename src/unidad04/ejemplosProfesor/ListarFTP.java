@@ -15,9 +15,9 @@ public class ListarFTP
     {
 
         // Datos para la conexion
-        String server = "";
-        String username = "";
-        String password = "";
+        String server = "192.168.0.101";
+        String username = "bayes";
+        String password = "bayes";
 
         // Cliente de conexion a FTP
         FTPClient ftp = new FTPClient();

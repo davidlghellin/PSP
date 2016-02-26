@@ -15,19 +15,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package unidad4.correo;
+package unidad04.correo;
 
 /**
  *
  * @author David López González
  */
-public class EnviarCorreo extends javax.swing.JFrame
+public class EnviarCorreoGUI extends javax.swing.JFrame
 {
 
     /**
      * Creates new form PrincipalCorreo
      */
-    public EnviarCorreo()
+    public EnviarCorreoGUI()
     {
         initComponents();
     }
@@ -178,17 +178,19 @@ public class EnviarCorreo extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(EnviarCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnviarCorreoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(EnviarCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnviarCorreoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(EnviarCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnviarCorreoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(EnviarCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnviarCorreoGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -197,7 +199,7 @@ public class EnviarCorreo extends javax.swing.JFrame
         {
             public void run()
             {
-                new EnviarCorreo().setVisible(true);
+                new EnviarCorreoGUI().setVisible(true);
             }
         });
     }

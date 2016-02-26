@@ -18,17 +18,14 @@ import org.apache.commons.net.ftp.FTPFile;
 public class FTP
 {
 
-    /**
-     *
-     * @param ftp es la instancia para la calse de FTP
-     */
+    
     public static FTPClient ftp = null;
     private static FileInputStream fis = null;
     private static FileOutputStream fos = null;
 
-    private static String ip = "";
-    private static String user = "";
-    private static String pass = "";
+    private static String ip = "192.168.0.101";
+    private static String user = "bayes";
+    private static String pass = "bayes";
     private static String localFile = "";
 
     private static String hostFile = "";

@@ -1,5 +1,6 @@
 package unidad04.ejemplosProfesor;
 
+import java.io.FileInputStream;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 
@@ -13,12 +14,11 @@ public class FTP
     public static void main(String[] args)
     {
         FTPClient cliente = new FTPClient();
-      /*  String servFTP = "matrix";
+        /*  String servFTP = "matrix";
         String usuario = "dam2";
         String clave = "admin_pass2";*/
-        
-        
-        String servFTP = "192.168.0.103";
+
+        String servFTP = "192.168.0.101";
         String usuario = "bayes";
         String clave = "bayes";
         try
@@ -50,6 +50,13 @@ public class FTP
                 System.out.println("\t" + files[i].getName()
                         + "\t=>" + tipos[files[i].getType()]);
             }
+
+            cliente.storeFile("fichSubido", new FileInputStream("/home/wizord/arch"));
+            
+         /*   InputStream in = new FileInputStream(files[0].toString());
+            ftp.setFileType(ftp.BINARY_FILE_TYPE);
+            boolean Store = ftp.storeFile("/home/wizord/aa", in);*/
+
             boolean logout = cliente.logout();
             if (logout)
             {

@@ -17,10 +17,15 @@ public class ClienteRMI
         SaludoInterface s = null;
         Registry reg = LocateRegistry.getRegistry("127.0.0.1", 5555);
         s = (SaludoInterface) reg.lookup("saludo2");
-        
+
         if (s != null)
         {
             System.out.println("salida::: " + s.despedirse());
+        }
+        s = (SaludoInterface) reg.lookup("saludo1");
+        if (s != null)
+        {
+            System.out.println("salida::: " + s.saludar());
         }
     }
 }
