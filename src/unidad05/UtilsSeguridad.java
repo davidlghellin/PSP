@@ -26,6 +26,21 @@ import javax.swing.JFileChooser;
 public class UtilsSeguridad
 {
 
+    //fileChooser
+    public static File guardarFichero()
+    {
+        JFileChooser fc = new JFileChooser();
+        fc.showSaveDialog(null);
+        return fc.getSelectedFile();
+    }
+
+    public static File abrirFichero()
+    {
+        JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(null);
+        return fc.getSelectedFile();
+    }
+
     //md5
     public static String Hexadecimal(byte[] resumen)
     {
@@ -109,20 +124,6 @@ public class UtilsSeguridad
 
         // Comprobamos si es correcto
         return signaturePublica.verify(firma);
-    }
-
-    public static File guardarFichero()
-    {
-        JFileChooser fc = new JFileChooser();
-        fc.showSaveDialog(null);
-        return fc.getSelectedFile();
-    }
-
-    public static File abrirFichero()
-    {
-        JFileChooser fc = new JFileChooser();
-        fc.showOpenDialog(null);
-        return fc.getSelectedFile();
     }
 
     public static void guardarPrivadaFichero(PrivateKey privateKey) throws FileNotFoundException, IOException
