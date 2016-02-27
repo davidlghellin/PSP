@@ -18,6 +18,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.swing.JFileChooser;
+import static unidad05.Ejemplo04.Hexadecimal;
+import unidad05.ejercicios.Ejer03;
 
 /**
  *
@@ -55,6 +57,17 @@ public class UtilsSeguridad
             hex += h;
         }
         return hex.toUpperCase();
+    }
+
+    public static String crearMD5(String texto) throws NoSuchAlgorithmException
+    {
+        MessageDigest md = MessageDigest.getInstance("MD5", Security.getProvider("SUN"));      //funcionaria si  lo quitamos
+        //md = MessageDigest.getInstance("MD5");   
+        
+        byte dataBytes[] = texto.getBytes();        //obtenemos los bytes
+        md.update(dataBytes);                       //actualizamos el mesagediges
+        byte resume[] = md.digest();                //Calcula el resumen
+        return Hexadecimal(resume);
     }
 
     public static boolean comprobarMD5(String md5) throws FileNotFoundException, IOException, NoSuchAlgorithmException
@@ -190,7 +203,7 @@ public class UtilsSeguridad
         return keydSA.generatePublic(clavePublicSpec);
     }
 
-    ///////////////////////////
+    //////////////////////////
     public static KeyPair crearParRSA() throws NoSuchAlgorithmException
     {
         // Obtenemos el tipo de algoritmo
@@ -239,9 +252,9 @@ public class UtilsSeguridad
         return cifrarClaveSecreta(secretKey, mensaje);
     }
 
-    ///////////////////////
-    ///  DESCIFRAR       //
-    ///////////////////////
+    //////////////////////////
+    ///     DESCIFRAR       //
+    //////////////////////////
     public static Key descifrarClaveSecreta(PrivateKey privateKey, byte claveEnvuelta[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException
     {
         // Desciframos la clave secreta con la clave RSA privada
