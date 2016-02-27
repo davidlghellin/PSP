@@ -9,8 +9,6 @@ import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -18,8 +16,6 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.swing.JFileChooser;
-import static unidad05.Ejemplo04.Hexadecimal;
-import unidad05.ejercicios.Ejer03;
 
 /**
  *
@@ -59,17 +55,31 @@ public class UtilsSeguridad
         return hex.toUpperCase();
     }
 
+    /**
+     * Genera el MD5 de un texto 
+     * @param texto Cadena de caracteres que queremos calcular la huella
+     * @return  El MD5 (String del texto)
+     * @throws NoSuchAlgorithmException
+     */
     public static String crearMD5(String texto) throws NoSuchAlgorithmException
     {
         MessageDigest md = MessageDigest.getInstance("MD5", Security.getProvider("SUN"));      //funcionaria si  lo quitamos
         //md = MessageDigest.getInstance("MD5");   
-        
+
         byte dataBytes[] = texto.getBytes();        //obtenemos los bytes
         md.update(dataBytes);                       //actualizamos el mesagediges
         byte resume[] = md.digest();                //Calcula el resumen
         return Hexadecimal(resume);
     }
 
+    /**
+     * Calcula el MD5 de un fichero que se seleccione y comprueba si el md5 pasado como parámetro es el correcto
+     * @param md5
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws NoSuchAlgorithmException 
+     */
     public static boolean comprobarMD5(String md5) throws FileNotFoundException, IOException, NoSuchAlgorithmException
     {
         File file = abrirFichero();

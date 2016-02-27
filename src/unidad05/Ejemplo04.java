@@ -17,20 +17,19 @@ public class Ejemplo04
         MessageDigest md;
         try
         {
-            md = MessageDigest.getInstance("MD5",Security.getProvider("SUN"));      //funcionaria si  lo quitamos
+            md = MessageDigest.getInstance("MD5", Security.getProvider("SUN"));      //funcionaria si  lo quitamos
             //md = MessageDigest.getInstance("MD5");   
             String texto = "Esto es un texto plano.";   //string a capturar
             byte dataBytes[] = texto.getBytes();        //obtenemos los bytes
             md.update(dataBytes);                       //actualizamos el mesagediges
             byte resume[] = md.digest();                //Calcula el resumen
             // Información
-            System.out.println("Original: "         + texto);
-            System.out.println("Número de Bytes: "  + md.getDigestLength());
-            System.out.println("Algoritmo: "        + md.getAlgorithm());
-            System.out.println("Mensaje resumen: "  + new String(resume));
-            System.out.println("Hexadecimal: "      + Hexadecimal(resume));
-            System.out.println(
-            MessageDigest.isEqual(dataBytes, ("esto es un texto plano.").getBytes()));
+            System.out.println("Original: " + texto);
+            System.out.println("Número de Bytes: " + md.getDigestLength());
+            System.out.println("Algoritmo: " + md.getAlgorithm());
+            System.out.println("Mensaje resumen: " + new String(resume));
+            System.out.println("Hexadecimal: " + Hexadecimal(resume));
+            System.out.println(MessageDigest.isEqual(dataBytes, ("esto es un texto plano.").getBytes()));
 
             // Proveedor
             Provider proveedor = md.getProvider();

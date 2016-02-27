@@ -1,7 +1,5 @@
 package unidad03.ejemplos.ejemplo05RMI01;
 
-import unidad03.ejemplos.ejemplo05RMI02.*;
-import unidad03.ejemplos.ejemplo05RMI01.*;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -18,22 +16,11 @@ public class Saludo implements SaludoInterface
 
     private String nombre;
 
-    public Saludo(String nombre)
-    {
-        this.nombre = nombre;
-    }
-    
+    public Saludo(String nombre){this.nombre = nombre;}
     @Override
-    public String saludar() throws RemoteException
-    {
-        return "Hola " + nombre;
-    }
-
+    public String saludar() throws RemoteException{return "Hola " + nombre;}
     @Override
-    public String despedirse() throws RemoteException
-    {
-        return "Adios " + nombre;
-    }
+    public String despedirse() throws RemoteException{return "Adios " + nombre;}
 
     public static void main(String[] args) throws InterruptedException
     {

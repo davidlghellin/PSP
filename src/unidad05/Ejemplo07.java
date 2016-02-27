@@ -19,11 +19,64 @@ import java.util.logging.Logger;
 public class Ejemplo07
 {
 
+    public static KeyPair crearPar() throws NoSuchAlgorithmException
+    {
+        //objeto generador, con el tipo de algoritmo
+        KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA");
+
+        //Inicialización del generador, semilla 
+        //tipo de algorimo para generar dicha semilla
+        SecureRandom numero = SecureRandom.getInstance("SHA1PRNG");
+        //le decimos el tamaño y la semilla
+        keyGen.initialize(1024, numero);
+
+        //Creación de las claves, tenemos la pareja en par
+        KeyPair parClaves = keyGen.generateKeyPair();
+        return parClaves;
+    }
+
+    public static PrivateKey generarPrivada(KeyPair parClaves)
+    {
+        return parClaves.getPrivate();
+    }
+
+    public static PublicKey generarPublica(KeyPair parClaves)
+    {
+        return parClaves.getPublic();
+    }
+
+    public static byte[] firmar(PrivateKey privateKey,String mensaje) throws InvalidKeyException, SignatureException, NoSuchAlgorithmException
+    {
+        //Firma con clave privada,necesitamos la signature, decimos el algoritmo
+        Signature signaturePrivada = Signature.getInstance("SHA1withDSA");
+        //cargamos la privada
+        signaturePrivada.initSign(privateKey);
+        //actualizamos, podemos pasar cualquier cosa
+        signaturePrivada.update(mensaje.getBytes());
+
+        //una vez actualizado aplicamos sing, nos devuelve la firma
+        byte[] firma = signaturePrivada.sign();
+        return firma;
+    }
+
+    public static boolean comprobarFirma(PublicKey publicKey, String mensaje, byte[] firma) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException
+    {
+        //comprobar necesito otro objeto signature y comprobar            
+        Signature signaturePublica = Signature.getInstance("SHA1withDSA");
+        // cargamos la publica
+        signaturePublica.initVerify(publicKey);
+        // actualizamos los datos a firmar
+        signaturePublica.update(mensaje.getBytes());
+
+        // Comprobamos si es correcto
+        return signaturePublica.verify(firma);
+    }
+
     public static void main(String[] args) throws FileNotFoundException, IOException, InvalidKeySpecException
     {
         try
         {
-            //objeor generador, con el tipo de algoritmo
+            //objeto generador, con el tipo de algoritmo
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA");
 
             //Inicialización del generador, semilla 
@@ -54,7 +107,7 @@ public class Ejemplo07
             System.out.println("Firma hexadecimal: " + Hexadecimal(firma));
             //
 
-            //comprbar necesito otro objeto signature y comprobar            
+            //comprobar necesito otro objeto signature y comprobar            
             Signature signaturePublica = Signature.getInstance("SHA1withDSA");
             // cargamos la publica
             signaturePublica.initVerify(publicKey);
@@ -63,7 +116,7 @@ public class Ejemplo07
 
             // Comprobamos si es correcto
             System.out.println(signaturePublica.verify(firma));
-            
+
             System.out.println("---------------------");
             System.out.println("---------------------");
 
@@ -141,9 +194,19 @@ public class Ejemplo07
             Signature signaFicherosPublic = Signature.getInstance("DSA");
             signaFicherosPublic.initVerify(clavePublicaFicheros);
             signaFicherosPublic.update((mensaje).getBytes());
-            
+
             //comprobacion
             System.out.println(signaFicherosPublic.verify(firma2Ficheros));
+            
+            
+            //pruebas métodos
+            System.out.println("\n\n\n\n");
+            KeyPair k2 = crearPar();
+            PrivateKey pk2=generarPrivada(parClaves);
+            PublicKey pu2=generarPublica(parClaves);
+            String sms="este es nuev mensae";
+            byte[] array=firmar(privateKey,sms);
+            System.out.println(comprobarFirma(pu2, sms,array));
 
         } catch (NoSuchAlgorithmException e)
         {

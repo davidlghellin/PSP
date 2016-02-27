@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
-import unidad05.ejercicios.ejer03.Ejer03;
+import unidad05.ejercicios.Ejer03;
 
 /**
  *

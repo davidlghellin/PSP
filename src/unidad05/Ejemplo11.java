@@ -10,6 +10,7 @@ import javax.crypto.*;
 
 public class Ejemplo11
 {
+
     public static void main(String[] args)
     {
         try
@@ -33,7 +34,7 @@ public class Ejemplo11
             Cipher c = Cipher.getInstance("RSA/ECB/PKCS1Padding");
             c.init(Cipher.WRAP_MODE, clavePublica);
             //hacemos la envoltura --> envuelve la clave secreta con la publica del receptor
-            byte claveenvuelta[] = c.wrap(clavesecreta);
+            byte claveEnvuelta[] = c.wrap(clavesecreta);
 
             //Ciframos el texto con la clave secreta para enviarlos al receptor
             c = Cipher.getInstance("AES/ECB/PKCS5Padding");
@@ -46,15 +47,16 @@ public class Ejemplo11
 
             System.out.println("Encriptado: " + new String(textoCifrado));
             System.out.println("");
-            
-            //Desciframos la clave secreta con la clave RSA privada
+
+            // Descifrar
+            // Desciframos la clave secreta con la clave RSA privada
             Cipher c2 = Cipher.getInstance("RSA/ECB/PKCS1Padding");
             c2.init(Cipher.UNWRAP_MODE, clavePrivada);
-            Key clavedesenvuelta = c2.unwrap(claveenvuelta, "AES", Cipher.SECRET_KEY);
+            Key claveDesenvuelta = c2.unwrap(claveEnvuelta, "AES", Cipher.SECRET_KEY);
 
             //Desciframos el texto con la clave desenvuelta
             c2 = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            c2.init(Cipher.DECRYPT_MODE, clavedesenvuelta);
+            c2.init(Cipher.DECRYPT_MODE, claveDesenvuelta);
             byte desencriptado[] = c2.doFinal(textoCifrado);
             System.out.println("Desencriptado: " + new String(desencriptado));
         } catch (Exception e)
