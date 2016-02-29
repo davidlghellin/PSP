@@ -419,6 +419,8 @@ public class GUI_FTP extends javax.swing.JFrame
         clave = jtfPass.getText();
         clave = "bayes";
         servFTP = jtfDireccion.getText();
+        if(!jtfPass.getText().equals(""))
+            clave=jtfPass.getText();
 
         try
         {
