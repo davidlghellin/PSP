@@ -19,7 +19,7 @@ import javax.swing.JFileChooser;
 public class Ejer05
 {
 
-    public  static KeyPair crearPar() throws NoSuchAlgorithmException
+    public static KeyPair crearPar() throws NoSuchAlgorithmException
     {
         //objeto generador, con el tipo de algoritmo
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA");
@@ -35,23 +35,25 @@ public class Ejer05
         return parClaves;
     }
 
-    public  static PrivateKey generarPrivada(KeyPair parClaves)
+    public static PrivateKey generarPrivada(KeyPair parClaves)
     {
         return parClaves.getPrivate();
     }
 
-    public  static PublicKey generarPublica(KeyPair parClaves)
+    public static PublicKey generarPublica(KeyPair parClaves)
     {
         return parClaves.getPublic();
     }
 
-    public  static byte[] firmar(PrivateKey privateKey, String mensaje) throws InvalidKeyException, SignatureException, NoSuchAlgorithmException
+    public static byte[] firmar(PrivateKey privateKey, String mensaje) throws InvalidKeyException, SignatureException, NoSuchAlgorithmException
     {
         //Firma con clave privada,necesitamos la signature, decimos el algoritmo
         Signature signaturePrivada = Signature.getInstance("SHA1withDSA");
         //cargamos la privada
         signaturePrivada.initSign(privateKey);
         //actualizamos, podemos pasar cualquier cosa
+        //File file=abrirFichero();
+        // byte[] array=file.
         signaturePrivada.update(mensaje.getBytes());
 
         //una vez actualizado aplicamos sing, nos devuelve la firma
@@ -71,19 +73,19 @@ public class Ejer05
         // Comprobamos si es correcto
         return signaturePublica.verify(firma);
     }
-    
+
     public static File abrirFichero()
     {
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(null);
         return fc.getSelectedFile();
     }
-    
+
     public static void main(String[] args) throws NoSuchAlgorithmException
     {
-        KeyPair key =crearPar();
-        PublicKey publicKey=generarPublica(key);
-        PrivateKey privateKey=generarPrivada(key);
-        File fichero=abrirFichero();
+        KeyPair key = crearPar();
+        PublicKey publicKey = generarPublica(key);
+        PrivateKey privateKey = generarPrivada(key);
+        File fichero = abrirFichero();
     }
 }
