@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja2;
 
 import static java.lang.Thread.sleep;
@@ -15,7 +10,21 @@ import java.util.logging.Logger;
  */
 public class EjerTorno2
 {
+    /*
+    Considera el caso de un parque público que dispone de varias puertas de acceso. El
+    acceso por cada una de las puertas del parque, está controlada por un torno
+    independiente, que envía un evento propio a una aplicación de computador que debe
+    contarlas y proporcionar en cualquier instante el número total de visitantes que han
+    entrado en el parque. Crea un programa concurrente que simule esta situación. Haz una
+    versión que falle y otra que solucione el problema.
+    
+    Orientaciones:
 
+    Cada torno estará representado por un hilo.
+    El número de visitantes se puede generar aleatoriamente para cada torno.
+    En cada instante se mostrará el número de visitantes que ya han entrado.
+    Al final se debe de mostrar el número total de visitantes.
+    */
     public static void main(String[] args)
     {
         Parque parque = new Parque();

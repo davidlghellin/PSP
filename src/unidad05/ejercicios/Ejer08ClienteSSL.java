@@ -1,12 +1,8 @@
 package unidad05.ejercicios;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.cert.X509Certificate;
 import java.util.Scanner;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 

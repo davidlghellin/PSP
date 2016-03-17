@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja1;
 
 import java.util.logging.Level;
@@ -15,6 +10,12 @@ import java.util.logging.Logger;
 public class ejer01 implements Runnable
 {
 
+    /*
+    Crear un programa que lance dos hilos. El primero de ellos
+    imprimirá por pantalla 10 veces la palabra “Hola” y el segundo 10 veces
+    la palabra “Adiós”. Incluir un tiempo de retardo aleatorio entre sentencias
+    de hasta 3 segundos.
+    */
     String texto;
 
     ejer01(String text)

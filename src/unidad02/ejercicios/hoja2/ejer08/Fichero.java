@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja2.ejer08;
 
 import java.io.BufferedReader;
@@ -21,12 +16,21 @@ import java.util.logging.Logger;
 public class Fichero
 {
 
+    /*
+    Dos tipos de procesos (lectores y escritores) para acceder a un fichero:
+    
+    Lectores: consultan el fichero.
+    Escritores: consultan y modifican el fichero.
+    Cuando un escritor accede al fichero, es el único proceso que la puede usar.
+    Varios lectores pueden acceder simultáneamente
+     */
+
     private static File fichero;
     private static boolean noEstaEscrito = true;
     private static boolean isEscribir = false;
     private static int isLeer = 0;
-    private static int lineasLeidas=0;
-    private static int lineasEscritas=0;
+    private static int lineasLeidas = 0;
+    private static int lineasEscritas = 0;
 
     /**
      * Le pasaremos la ruta al fichero donde se escribira y leerá
@@ -49,15 +53,15 @@ public class Fichero
         {
             while (isEscribir || isLeer > 0)
             {
-                System.out.println("Estan leyendo o escribiendo"+Thread.currentThread());
+                System.out.println("Estan leyendo o escribiendo" + Thread.currentThread());
                 wait();
             }
             isEscribir = true;
             FileWriter fw = new FileWriter(fichero, true);
             PrintWriter salida = new PrintWriter(fw);
             Thread.sleep(2000);
-            System.out.println("Escribimos en fichero: " + n +" soy:"+Thread.currentThread().getName());
-            salida.println(n+" soy: "+Thread.currentThread().getName());
+            System.out.println("Escribimos en fichero: " + n + " soy:" + Thread.currentThread().getName());
+            salida.println(n + " soy: " + Thread.currentThread().getName());
             salida.close();
             fw.close();
             lineasEscritas++;
@@ -65,7 +69,8 @@ public class Fichero
             isEscribir = false;
             notifyAll();
         } catch (InterruptedException e)
-        {Logger.getLogger(Fichero.class.getName()).log(Level.SEVERE, null, e);
+        {
+            Logger.getLogger(Fichero.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -76,9 +81,9 @@ public class Fichero
         {
             //TODO lineas leidas y escitas estaa mal
             //quitar
-            while (noEstaEscrito && lineasLeidas>=lineasEscritas)
+            while (noEstaEscrito && lineasLeidas >= lineasEscritas)
             {
-                System.out.println("Espera el lector a q escriba, soy "+Thread.currentThread().getName());
+                System.out.println("Espera el lector a q escriba, soy " + Thread.currentThread().getName());
                 wait();
             }
             isLeer++;
@@ -93,12 +98,13 @@ public class Fichero
                 //System.out.println("isLeer:"+isLeer);
             } while (text != null);
             System.out.println(text);
-            isLeer--;  
+            isLeer--;
             lineasLeidas++;
             notifyAll();
-          
+
         } catch (Exception e)
-        {Logger.getLogger(Fichero.class.getName()).log(Level.SEVERE, null, e);
+        {
+            Logger.getLogger(Fichero.class.getName()).log(Level.SEVERE, null, e);
         }
         return text;
     }

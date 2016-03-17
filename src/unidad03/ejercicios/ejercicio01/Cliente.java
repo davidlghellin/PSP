@@ -1,27 +1,9 @@
-/*
- * Copyright (C) 2015 David López González
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
 package unidad03.ejercicios.ejercicio01;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -34,6 +16,11 @@ import java.util.logging.Logger;
 public class Cliente
 {
 
+    /*
+    Construir un servidor en Java que actúe como un servidor echo. El servidor recibe del cliente una cadena de
+    texto y se la vuelve a enviar al cliente. El cliente se desconecta al introducir la cadena “Bye”. Construir
+    también un cliente para probar el servidor.
+     */
     private Socket clienteSocket;              // Socket de entrada
     private int puerto = 9000;          // Puerto con el que trabajaremos
     private DataOutputStream salida;    // Flujo que enviaremos al cliente
@@ -54,14 +41,14 @@ public class Cliente
 
             Scanner teclado = new Scanner(System.in);
             String texto = null;
-            String aux= null;
+            String aux = null;
             do
             {
                 System.out.println("Soy cliente mandando, introduzca Bye para terminar");
                 texto = teclado.nextLine();
                 salida.writeUTF(texto);
-              // if(!texto.equals("Bye"))
-                     aux = entrada.readUTF();
+                // if(!texto.equals("Bye"))
+                aux = entrada.readUTF();
                 System.out.println("Esto me lo envia el server: " + aux);
             } while (clienteSocket.isConnected() && !texto.equalsIgnoreCase("Bye"));
             System.out.println("Socket con el server cerrado");

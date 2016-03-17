@@ -20,6 +20,10 @@ import unidad01.InfoDisco;
 public class ejer01
 {
 
+    /*
+    Realiza un programa en Java que ejecute el comando ipconfig a través
+    de la consola del sistema operativo y muestre su resultado por pantalla.
+    */
     public static void main(String args[])
     {
 

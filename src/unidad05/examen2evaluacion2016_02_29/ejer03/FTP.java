@@ -25,7 +25,6 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import static unidad05.UtilsSeguridad.Hexadecimal;
-import unidad05.ejercicios.Ejer03;
 
 /**
  *
@@ -354,10 +353,10 @@ public class FTP extends javax.swing.JFrame
                 actualizarJTable();
             } catch (FileNotFoundException ex)
             {
-                Logger.getLogger(Ejer03.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FTP.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex)
             {
-                Logger.getLogger(Ejer03.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FTP.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

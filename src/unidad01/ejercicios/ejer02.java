@@ -15,6 +15,11 @@ import java.util.logging.Logger;
  */
 public class ejer02
 {
+    /*
+    Realiza un programa en Java que abra la calculadora de
+    Windows (alguna aplicación similar en Ubuntu) y muestre el mensaje “La
+    aplicación se ha cerrado con éxito.” Al cerrar la aplicación ejecutada.
+    */
     public static void main(String[] args)
     {
         Runtime r = Runtime.getRuntime();

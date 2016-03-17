@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja2.ejer08;
 
 import static java.lang.Thread.sleep;
@@ -13,8 +8,16 @@ import static java.lang.Thread.sleep;
  */
 public class Lector extends Thread
 {
-    private Fichero f;
 
+    /*
+    Dos tipos de procesos (lectores y escritores) para acceder a un fichero:
+    
+    Lectores: consultan el fichero.
+    Escritores: consultan y modifican el fichero.
+    Cuando un escritor accede al fichero, es el único proceso que la puede usar.
+    Varios lectores pueden acceder simultáneamente
+     */
+    private Fichero f;
 
     public Lector(Fichero f)
     {
@@ -27,10 +30,10 @@ public class Lector extends Thread
         String palabra;
         try
         {
-            while(true)
+            while (true)
             {
-                sleep((long) (Math.random()*2000));
-                palabra=f.leer();
+                sleep((long) (Math.random() * 2000));
+                palabra = f.leer();
                 System.out.println(palabra);
             }
         } catch (Exception e)

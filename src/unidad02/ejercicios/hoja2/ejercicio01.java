@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja2;
 
 import java.math.BigInteger;
@@ -14,6 +9,13 @@ import java.math.BigInteger;
 public class ejercicio01
 {
 
+    /*
+    El programa sumará los números primos comprendidos entre 1 y 100000000 (usa la
+    clase BigInteger). En el caso concurrente utiliza 5 hilos, cada uno para un rango de
+    números diferente, acumula la suma en una variable compartida, establece mecanismos
+    para evitar la condición de carrera. Toma los tiempos de ejecución en ambos programas
+    para comprobar el rendimiento de cada uno.
+    */
     public static void main(String[] args)
     {
         long tIni, tFin;

@@ -2,20 +2,13 @@ package unidad01.ejercicios;
 
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import unidad01.ejercicios.ejer04;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -23,10 +16,15 @@ import unidad01.ejercicios.ejer04;
  */
 public class ejer05_hoja2
 {
+    /*
+    Crea un programa que cree dos procesos basados en el terminal de
+    Windows, el primero debe enviarle al segundo una lista de comandos que deben de
+    estar en un fichero de texto. Captura las salidas de ambos.
+    */
     public static void main(String[] args) throws UnsupportedEncodingException
     {
         ProcessBuilder pb = new ProcessBuilder();
-       // pb.directory(new File("/home/wizord/Documentos/DAM/2ºDAM/PSP/"));
+        // pb.directory(new File("/home/wizord/Documentos/DAM/2ºDAM/PSP/"));
         String comando = "pwd";
         //String comando = "/bin/bash h.sh";
         pb.command(comando.split(" "));
@@ -63,6 +61,5 @@ public class ejer05_hoja2
             Logger.getLogger(ejer04.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Aplicacion terminada");
-
     }
 }

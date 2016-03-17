@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad01.ejercicios;
 
 import java.io.BufferedReader;
@@ -19,7 +14,15 @@ import java.util.logging.Logger;
  */
 public class ejer02_hoja2 extends javax.swing.JFrame
 {
-
+    /*
+    Realiza un programa en Java que emule al símbolo del sistema de Windows
+    o al Terminal de Linux. El programa debe crear un proceso basado en el comando cmd
+    de Windows o term para Linux. A través de los objetos obtenidos con
+    getOutputStream y getInputStream se enviaran comandos y se obtendrán los
+    resultados, que serán mostrados en un JTextArea. Establece como directorio de inicio
+    para el proceso la unidad c o la raíz.
+    NOTA: el directorio de inicio no se ha cambiado
+    */
     String comando;
     ProcessBuilder pb = null;
      Process p = null;

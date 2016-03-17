@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2015 David López González
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
- */
 package unidad03.ejercicios.ejercicio02b;
 
 import java.io.IOException;
@@ -23,10 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.security.auth.callback.TextOutputCallback;
 
 /**
  *
@@ -34,7 +15,11 @@ import javax.security.auth.callback.TextOutputCallback;
  */
 public class Servidor
 {
-
+    /*
+    Construir un servidor en Java que ofrezca dos servicios. Por un lado, actuará como un servidor echo para
+    clientes que soliciten este servicio en el puerto 9998; por otro lado, devolverá la hora del sistema a los clientes
+    que soliciten la hora a través del puerto 9999.
+    */
     public static void main(String[] args) throws IOException
     {
         Servidor s = new Servidor();

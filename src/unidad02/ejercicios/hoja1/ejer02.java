@@ -5,18 +5,18 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author David López González
  */
 public class ejer02
 {
+    /*
+    Crear un programa que pida al usuario un número mayor de
+    10. Lanzar dos hilos: el primero imprimirá por pantalla los números del 0
+    al número introducido; el segundo imprimirá por pantalla los números del
+    número introducido al 0. Tiempo de retardo máximo 1 segundo.
+    */
     public static void main(String[] args)
     {
         Scanner teclado = new Scanner(System.in);

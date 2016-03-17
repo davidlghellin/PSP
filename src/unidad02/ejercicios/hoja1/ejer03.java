@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja1;
 
 import java.util.logging.Level;
@@ -14,7 +9,12 @@ import java.util.logging.Logger;
  */
 public class ejer03
 {
-
+    /*
+    Crear un programa que lance dos hilos: el primero imprimirá por pantalla
+    del 1 al 10 con un retardo de 1 segundo; el segundo hará lo mismo pero
+    con 1,5 segundos de retardo
+    */
+    
     public static void main(String[] args)
     {
         AumentarEjer03 a1 = new AumentarEjer03();

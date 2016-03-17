@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja2.ejer08;
 
 import java.io.IOException;
@@ -14,6 +9,14 @@ import java.io.IOException;
 public class Principal
 {
 
+    /*
+    Dos tipos de procesos (lectores y escritores) para acceder a un fichero:
+    
+    Lectores: consultan el fichero.
+    Escritores: consultan y modifican el fichero.
+    Cuando un escritor accede al fichero, es el único proceso que la puede usar.
+    Varios lectores pueden acceder simultáneamente
+    */
     public static void main(String[] args) throws IOException
     {
 //        FileWriter fw = new FileWriter(new File("Prueba.txt"), true);

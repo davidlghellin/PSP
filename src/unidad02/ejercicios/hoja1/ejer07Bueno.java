@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja1;
 
 import java.io.File;
@@ -20,6 +15,10 @@ import java.util.logging.Logger;
 public class ejer07Bueno
 {
 
+    /*
+    Asignar prioridades a los hilos del ejercicios anterior para que escriban la
+    secuencia numérica de forma ascendente (de menor a mayor).
+    */
     public static void main(String[] args) throws IOException, InterruptedException
     {
 

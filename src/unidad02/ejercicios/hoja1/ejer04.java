@@ -14,6 +14,10 @@ import java.util.logging.Logger;
  */
 public class ejer04
 {
+    /*
+    Crea un programa que lance un hilo que muestre la serie de Fibonacci (1
+    1 2 3 5 8 13 ...).
+    */
 
     public static void main(String[] args)
     {
@@ -56,5 +60,4 @@ class SerieFiboThread implements Runnable
     {
         serie();
     }
-
 }

@@ -14,6 +14,12 @@ import java.util.logging.Logger;
 public class ejer06Bueno
 {
 
+    /*
+    Crear un programa con tres hilos que escriban en un mismo
+    archivo (Prueba.txt, habrá que crearlo si no existe). El primero de ellos
+    escribirá los números del 11 al 20; el segundo del 21 al 30; y el tercero
+    del 1 al 10.
+    */
     public static void main(String[] args) throws IOException, InterruptedException
     {
 

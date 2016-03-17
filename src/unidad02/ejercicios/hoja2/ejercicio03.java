@@ -22,6 +22,15 @@ import javax.swing.JPanel;
 public class ejercicio03
 {
 
+    /*
+    La letra debe empezar en las posiciones x=1 e y =100 y se moverá de izquierda a
+    derecha avanzando la x. Cuando la x sea mayor que el ancho del applet
+    (gezSize().width), hay que hacer que rebote y se mueva de derecha a izquierda. Habrá
+    que comprobar si la letra llega a la posición 1 para hacerla rebotar de nuevo y se mueva
+    de izquierda a derecha. Añade un botón con el texto Finalizar que al pulsarlo detendrá el
+    movimiento de la letra y mostrará el texto Reanudar, al pulsarlo continuará el
+    movimiento de la letra y cambiará el texto del botón a Finalizar.
+    */
     public static void main(String[] args)
     {   
         MiFrame frame = new MiFrame();

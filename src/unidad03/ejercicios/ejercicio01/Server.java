@@ -16,13 +16,18 @@ import java.util.logging.Logger;
 public class Server
 {
 
-    ServerSocket server;        // Socket server
-    Socket socket;              // Socket de entrada
+    /*
+    Construir un servidor en Java que actúe como un servidor echo. El servidor recibe del cliente una cadena de
+    texto y se la vuelve a enviar al cliente. El cliente se desconecta al introducir la cadena “Bye”. Construir
+    también un cliente para probar el servidor.
+     */
+    ServerSocket server;                // Socket server
+    Socket socket;                      // Socket de entrada
     private int puerto = 9000;          // Puerto con el que trabajaremos
-    private String ip = "127.0.0.1";      // Direción ip con la que escucharemos
-    InetSocketAddress direccion;         // Puerto con el que trabajaremos
-    DataOutputStream salida;    // Flujo que enviaremos al cliente
-    DataInputStream entrada;     // Flujo que leeremos del cliente
+    private String ip = "127.0.0.1";    // Direción ip con la que escucharemos
+    InetSocketAddress direccion;        // Puerto con el que trabajaremos
+    DataOutputStream salida;            // Flujo que enviaremos al cliente
+    DataInputStream entrada;            // Flujo que leeremos del cliente
 
     Server()
     {
@@ -54,4 +59,4 @@ public class Server
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}////////////////////
+}

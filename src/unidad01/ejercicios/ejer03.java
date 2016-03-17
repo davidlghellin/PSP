@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad01.ejercicios;
 
 import java.io.BufferedReader;
@@ -18,7 +13,11 @@ import java.util.logging.Logger;
  */
 public class ejer03
 {
-
+    /*
+    Realiza un programa en Java que admita como parámetro de entrada el
+    comando a ejecutar en la consola del sistema operativo y muestre en
+    pantalla el resultado.
+    */
     public static void main(String[] args)
     {
         if (args.length < 1)

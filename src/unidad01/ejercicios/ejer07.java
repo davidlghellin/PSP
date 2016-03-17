@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad01.ejercicios;
 
 import java.io.BufferedReader;
@@ -19,7 +14,12 @@ import unidad01.InfoDisco;
  */
 public class ejer07
 {
-
+    /*
+    Realizar un programa en Java que obtenga la dirección IP del
+    ordenador y la muestre por pantalla haciendo uso de lo visto en esta
+    unidad (ejecutando el comando ipconfig o ifconfig según el sistema sea
+    Windows o Linux).
+    */
     public static void main(String args[])
     {
 

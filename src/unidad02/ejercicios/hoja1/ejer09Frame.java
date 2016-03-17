@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unidad02.ejercicios.hoja1;
 
 import java.util.Calendar;
@@ -19,6 +14,11 @@ import javax.swing.JLabel;
 public class ejer09Frame
 {
 
+    /*
+    Crear un applet/frame en Java que muestre dos relojes digitales
+    usando hilos. El primero de ellos tendrá horario español y el segundo
+    horario canario.
+    */
     public static void main(String[] args)
     {
         FrameEjer09Thread frame = new FrameEjer09Thread();
