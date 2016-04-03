@@ -61,8 +61,8 @@ public class EjemploCorreo
 
         Transport t = sesion.getTransport();
 
-        String //pass = leePassword();
-        pass="aprenderesgratis";
+        String pass = leePassword();
+        
         t.connect(deCorreo,pass);
 
         t.sendMessage(mensaje, mensaje.getAllRecipients());

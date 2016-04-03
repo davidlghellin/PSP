@@ -57,7 +57,7 @@ public class EnviaMensajeChuwiki
         {
             protected PasswordAuthentication getPasswordAuthentication()
             {
-                return new PasswordAuthentication("davidlg.dam@gmail.com", "aprenderesgratis");
+                return new PasswordAuthentication("davidlg.dam@gmail.com", "contrasenya");
             }
         });
         // Para obtener un log de salida más extenso
